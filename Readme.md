@@ -1,4 +1,19 @@
-# Multi-threading et mutex C++11
+# Multi-threading libraries c++
+*  Rogue Wave SourcePro Threads Module
+*  Boost.Thread
+*  C++ Standard Library Thread
+*  Dlib
+*  OpenMP
+*  OpenThreads
+*  Parallel Patterns Library
+*  POCO C++ Libraries Threading
+*  POSIX Threads
+*  Qt QThread
+*  Stapl
+*  TBB
+*  IPP
+
+# C++ Standard Library Thread >= C++11
 ## 1. Qu'est-ce qu'un thread ?
 Les threads ou processus légers sont utilisés pour paralléliser l'exécution dans un programme. Ils sont dits légers car ils s'exécutent dans le même contexte que le processus d'exécution principal qui les crée et consomment donc moins de mémoire / CPU.
 
