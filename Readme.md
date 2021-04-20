@@ -15,7 +15,7 @@ On pourra bien sûr l'utiliser avec une lambda également.
 Dans l'exemple ci-dessus, vous avez pu constater l'appel à une méthode join. Cette fonction est bloquante jusqu'à ce que le thread ait terminé
 son exécution, dans notre cas jusqu'à ce que la boucle et l'affichage de chaque valeur ait été faite. Quand la fonction d'un thread est terminée, 
 le thread est automatiquement terminé.
-```
+```ruby
 #include <thread>
 #include <mutex>
 #include <iostream>
