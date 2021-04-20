@@ -422,3 +422,7 @@ int *i = (int *) arg;
 ```
 on incrémente la valeur et non l'adresse pointée :	```(*i)++;```
 
+
+
+## pthread_mutex_t
+
