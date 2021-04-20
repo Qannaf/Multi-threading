@@ -260,8 +260,12 @@ int main() {
 * Pré-requis
 Pour pouvoir créer des threads il faut utiliser la librairie pthread (POSIX thread):
 dans mon cas je l'ai mis en C:/Program Files/pthread/Pre-built.2  et j'ai utilisé CMakeLists.txt pour l'ajouter en utulisant CMake pour générer mon projet, voila le structure de mon programme:
+
 ![alt text](images/4.PNG?raw=true "sortie de code")
 
+
+## Premier thread
+Dans ce premier exemple, nous allons créer un thread qui affiche une message:
 ```ruby
 cmake_minimum_required(VERSION 2.8.12)
 
@@ -336,6 +340,7 @@ Dans cet exemple, nous utilisons la fonction suivante:
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
 ```
 Lorsque l'on exécute cet exemple, on a le résultat suivant :
+
 ![alt text](images/5.PNG?raw=true "sortie de code")
 
 On ne voit pas le message du thread e la fin de son exécution. Pour attendre la fin, il faut utiliser la fonction suivante :
@@ -347,6 +352,58 @@ Ajoutez la ligne suivante :
 pthread_join(thread1, NULL);
 ```
 après l'appel de la fonction pthread_create pour avoir le résultat suivant:
+
 ![alt text](images/6.PNG?raw=true "sortie de code")
 
+
+
+
+## Modification d'une variable
+Dans cet exemple nous allons incrémenter dans le thread un entier qui est déclaré dans le processus principal:
+```ruby
+#include <stdio.h>
+#include <stdlib.h>
+#define HAVE_STRUCT_TIMESPEC  
+#include <pthread.h>
+
+void* thread_1(void* arg) {
+	int* i = static_cast<int*> ( arg);
+	(*i) = 10;
+	printf("Nous sommes dans le threadi = %d.\n", *i);
+	
+	// Arrêt propre du thread
+	pthread_exit(EXIT_SUCCESS);
+
+	return EXIT_SUCCESS;
+}
+
+int main(void) {
+	int i(0);
+;	// Création de la variable qui va contenir le thread
+	pthread_t thread1;
+
+	printf("Avant la creation du thread i = %d.\n",i);
+
+	// Création du thread
+	pthread_create(&thread1, NULL, thread_1, &i);
+	pthread_join(thread1, NULL);
+
+	printf("Apres la creation du threadi = %d.\n", i);
+
+	system("pause");
+	return EXIT_SUCCESS;
+}
+```
+
+Cela donne le résultat suivant :
+
+![alt text](images/6.PNG?raw=true "sortie de code")
+
+On peut remarquer que:
+* dans le processus principal, on passe une référence vers la variable i (&i) dans la fonction pthread_create;
+* dans le thread on récupère le pointeur vers cette variable et on la déclare comme étant un entier :
+```ruby
+int *i = (int *) arg;
+```
+on incrémente la valeur et non l'adresse pointée :	```(*i)++;```
 
