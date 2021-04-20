@@ -225,30 +225,30 @@ namespace mutex
 	std::mutex lock;
 }
 
-void f1( const int& nbr, const std::string& t)
+void f1(const int& nbr, const std::string& t, const int& size = 10 )
 {
 	const std::lock_guard<std::mutex> lock(mutex::lock);
 
-	std::cout << "Dans le thread "<<t << "\n";
-	for (int i = 0; i < 10; ++i)
+	std::cout << "Dans le thread " << t << "\n";
+	for (int i = 0; i < size; ++i)
 		std::cout << (i * 3) + nbr << " ";
-	std::cout <<"\n";
+	std::cout << "\n";
 
 
 }
 
 
 int main() {
-	
 
-	std::thread t1(f1, 0, "t1");
-	std::thread t2(f1, 1, "t2");
-	std::thread t3(f1, 2, "t3");
-	
+
+	std::thread t1([]() {	f1(0, "t1");	 });
+	std::thread t2([]() {	f1(1, "t2", 10); });
+	std::thread t3([]() {	f1(2, "t3", 10); });
+
 	t1.join();
 	t2.join();
 	t3.join();
-	
+
 	return 0;
 }
 ```
@@ -397,7 +397,7 @@ int main(void) {
 
 Cela donne le résultat suivant :
 
-![alt text](images/6.PNG?raw=true "sortie de code")
+![alt text](images/7.PNG?raw=true "sortie de code")
 
 On peut remarquer que:
 * dans le processus principal, on passe une référence vers la variable i (&i) dans la fonction pthread_create;
