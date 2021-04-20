@@ -7,11 +7,11 @@ Un thread permet de paralléliser du code, son exécution, au sein d'un programm
 Les thread et mutex ont maintenant une API disponible dans la std : std::thread et std::mutex. Leurs documentations sont disponibles en ligne 
 aux adresses respectives suivantes http://www.cplusplus.com/reference/thread/thread/ et http://www.cplusplus.com/reference/mutex/
 
-* A. thread
-std::thread possède un constructeur par défaut, surtout utile pour pouvoir gérer ses threads dans des collections 
+* thread std::thread 
+possède un constructeur par défaut, surtout utile pour pouvoir gérer ses threads dans des collections 
 comme std::vector, mais surtout un constructeur qui prend une fonction et des arguments en paramètres et lancera un thread l'exécutant. 
 On pourra bien sûr l'utiliser avec une lambda également. 
-* B. join
+* join
 Dans l'exemple ci-dessus, vous avez pu constater l'appel à une méthode join. Cette fonction est bloquante jusqu'à ce que le thread ait terminé
 son exécution, dans notre cas jusqu'à ce que la boucle et l'affichage de chaque valeur ait été faite. Quand la fonction d'un thread est terminée, 
 le thread est automatiquement terminé.
@@ -32,3 +32,4 @@ int main(){
 	return 0 ;
 }
 ```
+![Alt text](images/1.PNG?raw=true "Title")
