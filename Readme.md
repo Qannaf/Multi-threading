@@ -39,7 +39,7 @@ int main(){
 Avec le multi-threading vient les soucis de synchronisation, plus communément appelés « race-condition ». En effet, chaque thread est exécuté en parallèle, 
 mais nous n'avons aucune assurance de l'ordre des opérations de chaque thread.
 Pour en prendre conscience, essayez le code suivant :
-<span class="selectionner_code LienSelectionne" id="code-d0e333" onclick="selectionCode('contenuCoded0e333', 'IdTitreCode-d0e333');">Sélectionnez</span>
+
 ```ruby
 #include <thread>
 #include <iostream>
@@ -68,3 +68,6 @@ int main() {
 	return 0;
 }
 ```
+![alt text](images/2.PNG?raw=true "sortie de code")
+![alt text](images/2a.PNG?raw=true "sortie de code")
+
