@@ -2,31 +2,65 @@
 #include <stdlib.h>
 #define HAVE_STRUCT_TIMESPEC  
 #include <pthread.h>
+#include<iostream>
+#include<string.h>
 
-void* thread_1(void* arg) {
-	int* i = static_cast<int*> ( arg);
-	(*i) = 10;
-	printf("Nous sommes dans le threadi = %d.\n", *i);
-	
-	// Arrêt propre du thread
-	pthread_exit(EXIT_SUCCESS);
 
-	return EXIT_SUCCESS;
+
+
+pthread_mutex_t lock;
+pthread_cond_t cv;
+
+void* doSomeThing(void* arg)
+{
+    pthread_mutex_lock(&lock);
+
+    
+
+    unsigned long i = 0;
+    int* counter = static_cast<int*>(arg);
+    (*counter)++;
+
+    std::cout << "\n debut du threadi = " << *counter << "\n";
+    for (i = 0; i < (0xFFFFFFFF); i++);
+    std::cout << "\n fin du threadi = " << *counter << "\n";
+
+
+    pthread_cond_wait(&cv, &lock);
+    printf("I've been unlocked.\n");
+    pthread_mutex_unlock(&lock);
+
+    // Arrêt propre du thread
+    pthread_exit(EXIT_SUCCESS);
+    return EXIT_SUCCESS;
 }
 
-int main(void) {
-	int i(0);
-;	// Création de la variable qui va contenir le thread
-	pthread_t thread1;
+void chakError(const bool& err)
+{
+    if (err != EXIT_SUCCESS)
+        std::cerr << "\ncan't create thread : " << strerror(err) << "\n";
+}
 
-	printf("Avant la creation du thread i = %d.\n",i);
+int main(void)
+{
+    // Création de la variable qui va contenir le thread
+    pthread_t t1, t2;
+    int i(0);
 
-	// Création du thread
-	pthread_create(&thread1, NULL, thread_1, &i);
-	pthread_join(thread1, NULL);
 
-	printf("Apres la creation du threadi = %d.\n", i);
+    chakError(pthread_mutex_init(&lock, NULL));
 
-	system("pause");
-	return EXIT_SUCCESS;
+    // Création du thread
+    chakError(pthread_create(&t1, NULL, &doSomeThing, &i));
+    chakError(pthread_create(&t2, NULL, &doSomeThing, &i));
+
+
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+
+    pthread_cond_signal(&cv);
+    pthread_mutex_destroy(&lock);
+
+    system("pause");
+    return EXIT_SUCCESS;
 }
