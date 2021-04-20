@@ -165,7 +165,6 @@ int main() {
 }
 ```
 ```ruby
-// 
 #include <thread>
 #include <mutex>
 #include <iostream>
@@ -187,6 +186,55 @@ void f1( const int& nbr, const std::string& t)
 	std::cout <<"\n";
 
 	mutex::lock.unlock();
+}
+
+
+int main() {
+	
+
+	std::thread t1(f1, 0, "t1");
+	std::thread t2(f1, 1, "t2");
+	std::thread t3(f1, 2, "t3");
+	
+	t1.join();
+	t2.join();
+	t3.join();
+	
+	return 0;
+}
+```
+![alt text](images/3.PNG?raw=true "sortie de code")
+
+
+* std::lock_guard
+Pour ce dernier cas, et pour une utilisation vraiment pratique et simplifiée des mutex, il existe un petit objet nommé 
+```ruby
+std::lock_guard.
+```
+
+Cet objet prend un mutex en paramètre et le verrouille à sa création, puis se charge de le libérer à sa destruction. Il est ainsi très simple de limiter un verrou à un bloc de code, et en particulier en cas d'exception, early-return ou toute sortie prématurée du bloc, le verrou est également libéré automatiquement.
+```ruby
+#include <thread>
+#include <mutex>
+#include <iostream>
+#include <string>
+
+// pour éveter d'utiliser des variables globales :)
+namespace mutex
+{
+	std::mutex lock;
+}
+
+void f1( const int& nbr, const std::string& t)
+{
+	const std::lock_guard<std::mutex> lock(mutex::lock);
+
+	std::cout << "Dans le thread "<<t << "\n";
+	for (int i = 0; i < 10; ++i)
+		std::cout << (i * 3) + nbr << " ";
+	std::cout <<"\n";
+
+
 }
 
 
