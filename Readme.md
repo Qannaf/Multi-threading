@@ -32,4 +32,4 @@ int main(){
 	return 0 ;
 }
 ```
-![Alt text](images/1.PNG?raw=true "Title")
+![Output code](images/1.PNG?raw=true "sortie de code")
