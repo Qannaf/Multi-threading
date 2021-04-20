@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="G:\Utilisateurs\qannaf.as\Desktop\Qannaf\Multi-threading\build\CMakeFiles\dfa136be60dca0cbba85c5c14abd86a5\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C569FB78-6397-3306-A8B2-EF741C41D648}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

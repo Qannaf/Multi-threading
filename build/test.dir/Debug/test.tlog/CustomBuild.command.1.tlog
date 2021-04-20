@@ -1,0 +1,10 @@
+^G:\UTILISATEURS\QANNAF.AS\DESKTOP\QANNAF\MULTI-THREADING\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SG:/Utilisateurs/qannaf.as/Desktop/Qannaf/Multi-threading -BG:/Utilisateurs/qannaf.as/Desktop/Qannaf/Multi-threading/build --check-stamp-file G:/Utilisateurs/qannaf.as/Desktop/Qannaf/Multi-threading/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
