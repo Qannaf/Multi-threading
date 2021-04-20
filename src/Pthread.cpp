@@ -27,7 +27,7 @@ void* doSomeThing(void* arg)
 
 
     pthread_cond_wait(&cv, &lock);
-    printf("I've been unlocked.\n");
+    printf("unlocked.\n");
     pthread_mutex_unlock(&lock);
 
     // Arrêt propre du thread
