@@ -562,3 +562,52 @@ int main(void)
 ```
 
 ![alt text](images/10.PNG?raw=true "sortie de code")
+
+
+## return a value from pthread threads in C
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+#define HAVE_STRUCT_TIMESPEC  
+#include <pthread.h>
+#include<iostream>
+#include<string.h>
+
+
+
+typedef struct thread_data {
+	int a;
+	int b;
+	int result;
+
+} thread_data;
+
+void* myThread(void* arg)
+{
+	thread_data* tdata = (thread_data*)arg;
+
+	int a = tdata->a;
+	int b = tdata->b;
+	int result = a + b;
+
+	tdata->result = result;
+	pthread_exit(NULL);
+	return 0;
+}
+
+int main()
+{
+	pthread_t tid;
+	thread_data tdata;
+
+	tdata.a = 10;
+	tdata.b = 32;
+
+	pthread_create(&tid, NULL, myThread, (void*)&tdata);
+	pthread_join(tid, NULL);
+
+	printf("%d + %d = %d\n", tdata.a, tdata.b, tdata.result);
+	system("pause");
+	return 0;
+}
+```
