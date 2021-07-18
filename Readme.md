@@ -1,7 +1,7 @@
 # Multi-threading
 ## Table of Contents
 1. [Multi-threading libraries c++](#1)  
-1. [C++ Standard Library Thread >= C++11] (#C++_Std)
+1. [C++ Standard Library Thread >= C++11] (#2)
 	1. [Qu'est-ce qu'un thread ?] (#21)
 	1. [L'API thread] (#22)
 	1. [Synchronisation : le mutex] (#23)
@@ -32,14 +32,14 @@
 *  TBB
 *  IPP
 
-<a name="C++_Std"></a>
-1. C++ Standard Library Thread >= C++11
+<a name="2"></a>
+# C++ Standard Library Thread >= C++11
 <a name="21"></a>
-	1. Qu'est-ce qu'un thread ?
+## 1. Qu'est-ce qu'un thread ?
 Les threads ou processus légers sont utilisés pour paralléliser l'exécution dans un programme. Ils sont dits légers car ils s'exécutent dans le même contexte que le processus d'exécution principal qui les crée et consomment donc moins de mémoire / CPU.
 
 <a name="22"></a>
-	2. L'API thread
+## 2. L'API thread
 Les thread et mutex ont maintenant une API disponible dans la std : std::thread et std::mutex. Leurs documentations sont disponibles en ligne 
 aux adresses respectives suivantes http://www.cplusplus.com/reference/thread/thread/ et http://www.cplusplus.com/reference/mutex/
 
@@ -97,7 +97,7 @@ int main() {
 ```
 ![alt text](images/1a.PNG?raw=true "sortie de code")
 <a name="23"></a>
-	3. Synchronisation : le mutex
+## 3. Synchronisation : le mutex
 Avec le multi-threading vient les soucis de synchronisation, plus communément appelés « race-condition ». En effet, chaque thread est exécuté en parallèle, 
 mais nous n'avons aucune assurance de l'ordre des opérations de chaque thread.
 Pour en prendre conscience, essayez le code suivant :
