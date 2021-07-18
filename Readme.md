@@ -1,7 +1,7 @@
 # Multi-threading
 ## Table of Contents
 1. [Multi-threading libraries c++](#1)  
-1. [C++ Standard Library Thread >= C++11] (#2)
+1. [C++ Standard Library Thread >= C++11] (#C++_Std)
 	1. [Qu'est-ce qu'un thread ?] (#21)
 	1. [L'API thread] (#22)
 	1. [Synchronisation : le mutex] (#23)
@@ -32,7 +32,7 @@
 *  TBB
 *  IPP
 
-<a name="2"></a>
+<a name="C++_Std"></a>
 1. C++ Standard Library Thread >= C++11
 <a name="21"></a>
 ## 1. Qu'est-ce qu'un thread ?
