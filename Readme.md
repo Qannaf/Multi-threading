@@ -2,8 +2,8 @@
 ## Table of Contents
 1. [Multi-threading libraries c++](#1)  
 1. [C++ Standard Library Thread >= C++11](#2)
-	1. [Qu'est-ce qu'un thread ?] (#21)
-	1. [L'API thread] (#22)
+	1. [Qu'est-ce qu'un thread ?](#21)
+	1. [L'API thread](#22)
 	1. [Synchronisation : le mutex](#23)
 1. [C pthread ](#3)
 	1. [Premier thread](#31)
