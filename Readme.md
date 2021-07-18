@@ -17,7 +17,7 @@
 	1. [QThread with QMutex](#43)
 
 <a name="1"></a>
-# Multi-threading libraries c++
+1. Multi-threading libraries c++
 *  Rogue Wave SourcePro Threads Module
 *  Boost.Thread
 *  C++ Standard Library Thread
@@ -33,7 +33,7 @@
 *  IPP
 
 <a name="2"></a>
-# C++ Standard Library Thread >= C++11
+1. C++ Standard Library Thread >= C++11
 <a name="21"></a>
 ## 1. Qu'est-ce qu'un thread ?
 Les threads ou processus légers sont utilisés pour paralléliser l'exécution dans un programme. Ils sont dits légers car ils s'exécutent dans le même contexte que le processus d'exécution principal qui les crée et consomment donc moins de mémoire / CPU.
@@ -292,7 +292,7 @@ int main() {
 
 
 
-# C pthread 
+1. C pthread 
 * Pré-requis
 Pour pouvoir créer des threads il faut utiliser la librairie pthread (POSIX thread):
 dans mon cas je l'ai mis en C:/Program Files/pthread/Pre-built.2  et j'ai utilisé CMakeLists.txt pour l'ajouter en utulisant CMake pour générer mon projet, voila le structure de mon programme:
@@ -636,7 +636,7 @@ int main()
 
 ![alt text](images/11.PNG?raw=true "sortie de code")
 <a name="4"></a>
-# QThread 
+1. QThread 
 
 <a name="41"></a>
 * QThread
