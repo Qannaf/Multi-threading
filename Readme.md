@@ -1,3 +1,22 @@
+# Multi-threading
+## Table of Contents
+1. [Multi-threading libraries c++](#1)  
+    1. [C++ Standard Library Thread >= C++11] (#2)
+	    1. [Qu'est-ce qu'un thread ?] (#21)
+		1. [L'API thread] (#22)
+		1. [Synchronisation : le mutex] (#23)
+	1. [pthread] (#3)
+		1. [Premier thread](#31)
+		1. [Modification d'une variable](#32)
+		1. [pthread_mutex_t](#33)
+		1. [pthread_cond_t](#34)
+		1. [return a value from pthread threads in C](#35)
+	1. [QThread] (#4)
+	    1. [QThread ](#41)
+		1. [QThread "HighestPriority, NormalPriority and LowestPriority"](#42)
+		1. [QThread with QMutex](#43)
+
+<a name="1"></a>
 # Multi-threading libraries c++
 *  Rogue Wave SourcePro Threads Module
 *  Boost.Thread
@@ -13,11 +32,13 @@
 *  TBB
 *  IPP
 
+<a name="2"></a>
 # C++ Standard Library Thread >= C++11
+<a name="21"></a>
 ## 1. Qu'est-ce qu'un thread ?
 Les threads ou processus légers sont utilisés pour paralléliser l'exécution dans un programme. Ils sont dits légers car ils s'exécutent dans le même contexte que le processus d'exécution principal qui les crée et consomment donc moins de mémoire / CPU.
 
-
+<a name="22"></a>
 ## 2. L'API thread
 Les thread et mutex ont maintenant une API disponible dans la std : std::thread et std::mutex. Leurs documentations sont disponibles en ligne 
 aux adresses respectives suivantes http://www.cplusplus.com/reference/thread/thread/ et http://www.cplusplus.com/reference/mutex/
@@ -75,8 +96,8 @@ int main() {
 }
 ```
 ![alt text](images/1a.PNG?raw=true "sortie de code")
-
-# 3. Synchronisation : le mutex
+<a name="23"></a>
+## 3. Synchronisation : le mutex
 Avec le multi-threading vient les soucis de synchronisation, plus communément appelés « race-condition ». En effet, chaque thread est exécuté en parallèle, 
 mais nous n'avons aucune assurance de l'ordre des opérations de chaque thread.
 Pour en prendre conscience, essayez le code suivant :
@@ -278,7 +299,7 @@ dans mon cas je l'ai mis en C:/Program Files/pthread/Pre-built.2  et j'ai utilis
 
 ![alt text](images/4.PNG?raw=true "sortie de code")
 
-
+<a name="31"></a>
 ## Premier thread
 Dans ce premier exemple, nous allons créer un thread qui affiche une message:
 ```CPP
@@ -296,6 +317,7 @@ include_directories(${hdr})
 # Add the sources (/*.cpp)
 file(GLOB USER_CPP "src/*.cpp"  )
 
+<a name="3"></a>
 # pthread
 set(PTHREAD_DIR "C:/Program Files/pthread/Pre-built.2" CACHE PATH "Location of libraries" FORCE)
 set(PTHREAD_LIBS "pthreadVC2.lib")
@@ -372,7 +394,7 @@ après l'appel de la fonction pthread_create pour avoir le résultat suivant:
 
 
 
-
+<a name="32"></a>
 ## Modification d'une variable
 Dans cet exemple nous allons incrémenter dans le thread un entier qui est déclaré dans le processus principal:
 ```CPP
@@ -423,7 +445,7 @@ int *i = (int *) arg;
 on incrémente la valeur et non l'adresse pointée :	```(*i)++;```
 
 
-
+<a name="33"></a>
 ## pthread_mutex_t
 ```CPP
 #include <stdio.h>
@@ -490,7 +512,7 @@ int main(void)
 ![alt text](images/9.PNG?raw=true "sortie de code")
 
 
-
+<a name="34"></a>
 ## pthread_cond_t
 ```CPP
 #include <stdio.h>
@@ -563,7 +585,7 @@ int main(void)
 
 ![alt text](images/10.PNG?raw=true "sortie de code")
 
-
+<a name="35"></a>
 ## return a value from pthread threads in C
 ```cpp
 #include <stdio.h>
@@ -613,14 +635,17 @@ int main()
 ```
 
 ![alt text](images/11.PNG?raw=true "sortie de code")
-
+<a name="4"></a>
 # QThread 
 
+<a name="41"></a>
 * QThread
 ![alt text](images/28.PNG?raw=true "sortie de code")
 
+<a name="42"></a>
 * QThread "HighestPriority, NormalPriority and LowestPriority"
 ![alt text](images/29.PNG?raw=true "sortie de code")
 
+<a name="43"></a>
 * QThread with QMutex
 ![alt text](images/30.PNG?raw=true "sortie de code")
