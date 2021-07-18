@@ -30,7 +30,7 @@ On pourra bien sûr l'utiliser avec une lambda également.
 Dans l'exemple ci-dessus, vous avez pu constater l'appel à une méthode join. Cette fonction est bloquante jusqu'à ce que le thread ait terminé
 son exécution, dans notre cas jusqu'à ce que la boucle et l'affichage de chaque valeur ait été faite. Quand la fonction d'un thread est terminée, 
 le thread est automatiquement terminé.
-```ruby
+```CPP
 #include <thread>
 #include <mutex>
 #include <iostream>
@@ -50,7 +50,7 @@ int main(){
 ![alt text](images/1.PNG?raw=true "sortie de code")
 
 * lambda fonction
-```ruby
+```CPP
 #include <thread>
 #include <iostream>
 
@@ -81,7 +81,7 @@ Avec le multi-threading vient les soucis de synchronisation, plus communément a
 mais nous n'avons aucune assurance de l'ordre des opérations de chaque thread.
 Pour en prendre conscience, essayez le code suivant :
 
-```ruby
+```CPP
 #include <thread>
 #include <iostream>
 int main() { 
@@ -120,7 +120,7 @@ par un unique thread à la fois.
 
 Pour synchroniser nos applications, nous pouvons avoir recours à un `mutex`. 
 Les mutex sont maintenant disponibles dans la std avec 
-```ruby
+```CPP
 std::mutex 
 std::recursive_mutex 
 std::timed_mutex  
@@ -136,7 +136,7 @@ std::mutex est le plus simple d'entre eux. Il peut être verrouillé une seule e
 
 On pourra ainsi modifier le premier code comme ceci :
 
-```ruby
+```CPP
 // avec fonction lambda
 #include <thread>
 #include <mutex>
@@ -179,7 +179,7 @@ int main() {
 	return 0;
 }
 ```
-```ruby
+```CPP
 #include <thread>
 #include <mutex>
 #include <iostream>
@@ -223,12 +223,12 @@ int main() {
 
 * std::lock_guard
 Pour ce dernier cas, et pour une utilisation vraiment pratique et simplifiée des mutex, il existe un petit objet nommé 
-```ruby
+```CPP
 std::lock_guard.
 ```
 
 Cet objet prend un mutex en paramètre et le verrouille à sa création, puis se charge de le libérer à sa destruction. Il est ainsi très simple de limiter un verrou à un bloc de code, et en particulier en cas d'exception, early-return ou toute sortie prématurée du bloc, le verrou est également libéré automatiquement.
-```ruby
+```CPP
 #include <thread>
 #include <mutex>
 #include <iostream>
@@ -281,7 +281,7 @@ dans mon cas je l'ai mis en C:/Program Files/pthread/Pre-built.2  et j'ai utilis
 
 ## Premier thread
 Dans ce premier exemple, nous allons créer un thread qui affiche une message:
-```ruby
+```CPP
 cmake_minimum_required(VERSION 2.8.12)
 
 project(test)
@@ -320,7 +320,7 @@ set( PCL_LIB_DLL_DEBUG "${PTHREAD_DIR}/dll/x64/pthreadVC2.dll"  )
 	message("Done coping .dll files")
 ```
 Pthread.cpp
-```ruby
+```CPP
 #include <stdio.h>
 #include <stdlib.h>
 #define HAVE_STRUCT_TIMESPEC  
@@ -351,7 +351,7 @@ int main(void) {
 }
 ```
 Dans cet exemple, nous utilisons la fonction suivante:
-```ruby
+```CPP
 int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
 ```
 Lorsque l'on exécute cet exemple, on a le résultat suivant :
@@ -359,11 +359,11 @@ Lorsque l'on exécute cet exemple, on a le résultat suivant :
 ![alt text](images/5.PNG?raw=true "sortie de code")
 
 On ne voit pas le message du thread e la fin de son exécution. Pour attendre la fin, il faut utiliser la fonction suivante :
-```ruby
+```CPP
 int pthread_join(pthread_t thread, void **retval);
 ```
 Ajoutez la ligne suivante :
-```ruby
+```CPP
 pthread_join(thread1, NULL);
 ```
 après l'appel de la fonction pthread_create pour avoir le résultat suivant:
@@ -375,7 +375,7 @@ après l'appel de la fonction pthread_create pour avoir le résultat suivant:
 
 ## Modification d'une variable
 Dans cet exemple nous allons incrémenter dans le thread un entier qui est déclaré dans le processus principal:
-```ruby
+```CPP
 #include <stdio.h>
 #include <stdlib.h>
 #define HAVE_STRUCT_TIMESPEC  
@@ -417,7 +417,7 @@ Cela donne le résultat suivant :
 On peut remarquer que:
 * dans le processus principal, on passe une référence vers la variable i (&i) dans la fonction pthread_create;
 * dans le thread on récupère le pointeur vers cette variable et on la déclare comme étant un entier :
-```ruby
+```CPP
 int *i = (int *) arg;
 ```
 on incrémente la valeur et non l'adresse pointée :	```(*i)++;```
@@ -425,7 +425,7 @@ on incrémente la valeur et non l'adresse pointée :	```(*i)++;```
 
 
 ## pthread_mutex_t
-```ruby
+```CPP
 #include <stdio.h>
 #include <stdlib.h>
 #define HAVE_STRUCT_TIMESPEC  
@@ -492,7 +492,7 @@ int main(void)
 
 
 ## pthread_cond_t
-```ruby
+```CPP
 #include <stdio.h>
 #include <stdlib.h>
 #define HAVE_STRUCT_TIMESPEC  
@@ -611,3 +611,16 @@ int main()
 	return 0;
 }
 ```
+
+![alt text](images/11.PNG?raw=true "sortie de code")
+
+# Pthread 
+
+* QThread
+![alt text](images/28.PNG?raw=true "sortie de code")
+
+* QThread "HighestPriority, NormalPriority and LowestPriority"
+![alt text](images/29.PNG?raw=true "sortie de code")
+
+* QThread with QMutex
+![alt text](images/30.PNG?raw=true "sortie de code")
