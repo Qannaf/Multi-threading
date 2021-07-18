@@ -614,7 +614,7 @@ int main()
 
 ![alt text](images/11.PNG?raw=true "sortie de code")
 
-# Pthread 
+# QThread 
 
 * QThread
 ![alt text](images/28.PNG?raw=true "sortie de code")
