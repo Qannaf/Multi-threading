@@ -18,19 +18,19 @@
 
 <a name="1"></a>
 # Multi-threading libraries c++
-*  Rogue Wave SourcePro Threads Module
-*  Boost.Thread
-*  C++ Standard Library Thread
-*  Dlib
-*  OpenMP
-*  OpenThreads
-*  Parallel Patterns Library
-*  POCO C++ Libraries Threading
-*  POSIX Threads
-*  Qt QThread
-*  Stapl
-*  TBB
-*  IPP
+* Rogue Wave SourcePro Threads Module
+* Boost.Thread
+* C++ Standard Library Thread
+* Dlib
+* OpenMP
+* OpenThreads
+* Parallel Patterns Library
+* POCO C++ Libraries Threading
+* POSIX Threads
+* Qt QThread
+* Stapl
+* TBB
+* IPP
 
 <a name="2"></a>
 # C++ Standard Library Thread >= C++11
