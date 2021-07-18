@@ -33,7 +33,7 @@
 *  IPP
 
 <a name="2"></a>
-1. C++ Standard Library Thread >= C++11
+2. C++ Standard Library Thread >= C++11
 <a name="21"></a>
 ## 1. Qu'est-ce qu'un thread ?
 Les threads ou processus légers sont utilisés pour paralléliser l'exécution dans un programme. Ils sont dits légers car ils s'exécutent dans le même contexte que le processus d'exécution principal qui les crée et consomment donc moins de mémoire / CPU.
